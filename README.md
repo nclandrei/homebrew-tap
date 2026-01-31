@@ -1,6 +1,6 @@
 # Homebrew Tap
 
-Personal Homebrew tap for nclandrei's projects.
+Homebrew tap for my personal projects.
 
 ## Installation
 
