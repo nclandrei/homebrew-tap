@@ -6,11 +6,12 @@ Homebrew tap for my personal projects.
 
 ```bash
 brew tap nclandrei/tap
-brew install teller
+brew install <formula>
 ```
 
 ## Available Formulas
 
 | Formula | Description |
 |---------|-------------|
+| claude-statusline | Minimal statusline renderer for Claude Code |
 | teller | AI-powered financial assistant for managing documents and transactions |
