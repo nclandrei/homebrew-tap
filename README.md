@@ -14,4 +14,5 @@ brew install <formula>
 | Formula | Description |
 |---------|-------------|
 | claude-statusline | Minimal statusline renderer for Claude Code |
+| screenforge | CLI tool for generating App Store-style marketing screenshots from YAML |
 | teller | AI-powered financial assistant for managing documents and transactions |
