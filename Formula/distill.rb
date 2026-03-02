@@ -1,18 +1,31 @@
 class Distill < Formula
   desc "CLI tool that monitors AI agent sessions, identifies patterns, and proposes skills"
   homepage "https://github.com/nclandrei/distill"
-  url "https://github.com/nclandrei/distill/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "1d576e0ca88cd1e661067272a7d6f5a65655d70a7ce56d91b6223b3ad6e950ba"
+  version "0.1.1"
   license "MIT"
 
-  depends_on "rust" => :build
+  on_macos do
+    if Hardware::CPU.arm?
+      url "https://github.com/nclandrei/distill/releases/download/v0.1.1/distill-0.1.1-aarch64-apple-darwin.tar.gz"
+      sha256 "d6c40c3298dd853eea8c9217a0d001bb17e24bfe3617497fcc4edf152980273d"
+    else
+      url "https://github.com/nclandrei/distill/releases/download/v0.1.1/distill-0.1.1-x86_64-apple-darwin.tar.gz"
+      sha256 "e0f340a0865abbb6a284b463165e66b57abfbbf5580b1e7db669764d7b843fe5"
+    end
+  end
+
+  on_linux do
+    if Hardware::CPU.intel?
+      url "https://github.com/nclandrei/distill/releases/download/v0.1.1/distill-0.1.1-x86_64-unknown-linux-gnu.tar.gz"
+      sha256 "30cc12732d631a259919b7f06fef3678e9df9f433669e942e2448bf11ef3fe04"
+    end
+  end
 
   def install
-    system "cargo", "install", *std_cargo_args
+    bin.install "distill"
   end
 
   test do
-    assert_match "distill", shell_output("#{bin}/distill --help")
     assert_match version.to_s, shell_output("#{bin}/distill --version")
   end
 end
