@@ -1,8 +1,8 @@
 class Screenforge < Formula
   desc "CLI tool for generating App Store-style marketing screenshots"
   homepage "https://github.com/nclandrei/screenforge"
-  url "https://github.com/nclandrei/screenforge/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "5d7e85c001cab028d36f85b5a5bd21cf473e60613e6b2b203bdb449d349ee308"
+  url "https://github.com/nclandrei/screenforge/archive/refs/tags/v0.1.1.tar.gz"
+  sha256 "c7fb7ae514266027eaf0ed9c027ed3a6bd8c4f1ea221ad45654032c5adfff0ff"
   license "MIT"
 
   depends_on "rust" => :build
