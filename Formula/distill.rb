@@ -5,17 +5,17 @@ class Distill < Formula
   if OS.mac?
     if Hardware::CPU.arm?
       url "https://github.com/nclandrei/distill/releases/download/v0.1.5/distill-cli-aarch64-apple-darwin.tar.xz"
-      sha256 "53853d780f71b6775eb1a1e6e1e3a6c37e55ffd162708a23492bcac0b30ef688"
+      sha256 "3ed885e9b0a8e3971ca8bf8552bbaead56b74dc64c58bce2a28e263511893da6"
     end
     if Hardware::CPU.intel?
       url "https://github.com/nclandrei/distill/releases/download/v0.1.5/distill-cli-x86_64-apple-darwin.tar.xz"
-      sha256 "0b4bb573e0f207a256632de1acfda0c16dc4fd568bc5440327a6773e0803a887"
+      sha256 "c6ad479f2ac2504c91cb48ac5823f7d9fbc6d62389fb792b4857f8beee7b3391"
     end
   end
   if OS.linux?
     if Hardware::CPU.intel?
       url "https://github.com/nclandrei/distill/releases/download/v0.1.5/distill-cli-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "d38b786925a9119e394e15077150fc794c2c9e89aa6ae44bb471aded61ac1341"
+      sha256 "9f31a52cba99910ee663cf3c90f81704288bb3c557e29219933c556e2e2f36b0"
     end
   end
   license "MIT"
