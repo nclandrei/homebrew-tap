@@ -1,21 +1,21 @@
 class Distill < Formula
   desc "CLI tool that monitors AI agent sessions, identifies patterns, and proposes skills"
   homepage "https://github.com/nclandrei/distill"
-  version "0.4.1"
+  version "0.5.0"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/nclandrei/distill/releases/download/v0.4.1/distill-cli-aarch64-apple-darwin.tar.xz"
-      sha256 "80ede7d6313f59ab94907638e4aa2d14fb8d79b094114eb7d71ceaa8b62a2bcf"
+      url "https://github.com/nclandrei/distill/releases/download/v0.5.0/distill-cli-aarch64-apple-darwin.tar.xz"
+      sha256 "e3ae28283dc5254f5784de7b6fc61a218da996741fa73cc9d785e5d3709ee4ea"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/nclandrei/distill/releases/download/v0.4.1/distill-cli-x86_64-apple-darwin.tar.xz"
-      sha256 "b49f8ecbacbe7ab9f3b608666fb02eea20d296207a64bbe77b3022c0ec7a8f3c"
+      url "https://github.com/nclandrei/distill/releases/download/v0.5.0/distill-cli-x86_64-apple-darwin.tar.xz"
+      sha256 "906ffbdd0a78476d1b1dd95e0e8fe520ccbaabbb3aea1e076dcaba932ace6db9"
     end
   end
   if OS.linux?
     if Hardware::CPU.intel?
-      url "https://github.com/nclandrei/distill/releases/download/v0.4.1/distill-cli-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "3d700a388142cab1116f13a1cce00e31858c51512bb91765eb240364370b7179"
+      url "https://github.com/nclandrei/distill/releases/download/v0.5.0/distill-cli-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "39b7ab2a5994f92bc92c7cdc1af5d10f8e549d15560f7b77bc1c2188aaed7eca"
     end
   end
   license "MIT"
