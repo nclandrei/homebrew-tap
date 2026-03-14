@@ -6,7 +6,7 @@ Homebrew tap for my personal projects.
 
 ```bash
 brew tap nclandrei/tap
-brew install <formula>
+brew install nclandrei/tap/<formula>
 ```
 
 ## Available Formulas
@@ -15,6 +15,7 @@ brew install <formula>
 |---------|-------------|
 | claude-statusline | Minimal statusline renderer for Claude Code |
 | distill | CLI tool that monitors AI agent sessions, identifies patterns, and proposes skills |
+| mcpsmith | Convert MCP servers into source-grounded skill packs with staged review and verify steps (builds from the published crates.io source package) |
 | planwarden | CLI planning enforcer for AI agents |
 | screenforge | CLI tool for generating App Store-style marketing screenshots |
 | teller | AI-powered financial assistant for managing documents and transactions |
