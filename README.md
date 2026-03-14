@@ -15,6 +15,7 @@ brew install nclandrei/tap/<formula>
 |---------|-------------|
 | claude-statusline | Minimal statusline renderer for Claude Code |
 | distill | CLI tool that monitors AI agent sessions, identifies patterns, and proposes skills |
+| magellan | Deterministic presentation engine for AI-generated technical walkthroughs |
 | mcpsmith | Convert MCP servers into source-grounded skill packs with staged review and verify steps (builds from the published crates.io source package) |
 | planwarden | CLI planning enforcer for AI agents |
 | screenforge | CLI tool for generating App Store-style marketing screenshots |
