@@ -1,21 +1,21 @@
 class Planwarden < Formula
   desc "CLI planning enforcer for AI agents"
   homepage "https://github.com/nclandrei/planwarden"
-  version "0.2.0"
+  version "0.3.0"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/nclandrei/planwarden/releases/download/v0.2.0/planwarden-aarch64-apple-darwin.tar.xz"
-      sha256 "5d68772813279ea543cf695a7d9046592ec51152f2a1432fd5d0cac8b8da68af"
+      url "https://github.com/nclandrei/planwarden/releases/download/v0.3.0/planwarden-aarch64-apple-darwin.tar.xz"
+      sha256 "75603ba8b7c704082eb01c7d002962aa76702b0eb6bd0dacc3f55c74f0b1b27c"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/nclandrei/planwarden/releases/download/v0.2.0/planwarden-x86_64-apple-darwin.tar.xz"
-      sha256 "931c9cce67e603fa3d78c847abd2c125c827132df3d403b41f2439ef0de020ee"
+      url "https://github.com/nclandrei/planwarden/releases/download/v0.3.0/planwarden-x86_64-apple-darwin.tar.xz"
+      sha256 "0cf8efcfa4b5719a52d7579f9f39762213238fa4ed49c287c0a4c033490d325c"
     end
   end
   if OS.linux?
     if Hardware::CPU.intel?
-      url "https://github.com/nclandrei/planwarden/releases/download/v0.2.0/planwarden-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "ddcbf55b6a438a270e9c731d5741281191688214823d73ee88e909b854de6ebc"
+      url "https://github.com/nclandrei/planwarden/releases/download/v0.3.0/planwarden-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "738532471721e0dc707a608ba901d6050b33e17416f357cc6416b51862993cfa"
     end
   end
   license "MIT"
