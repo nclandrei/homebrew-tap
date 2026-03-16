@@ -6,6 +6,8 @@ Homebrew tap for my personal projects.
 
 ```bash
 brew tap nclandrei/tap
+brew install nclandrei/tap/proctor
+# or
 brew install nclandrei/tap/<formula>
 ```
 
