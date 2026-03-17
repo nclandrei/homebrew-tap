@@ -1,65 +1,18 @@
 class Distill < Formula
-  desc "CLI tool that monitors AI agent sessions, identifies patterns, and proposes skills"
+  desc "Monitor AI agent sessions and propose reusable skills"
   homepage "https://github.com/nclandrei/distill"
-  version "0.5.2"
-  if OS.mac?
-    if Hardware::CPU.arm?
-      url "https://github.com/nclandrei/distill/releases/download/v0.5.2/distill-cli-aarch64-apple-darwin.tar.xz"
-      sha256 "58c61242292d406b95eeef545b2053dad6ef5d667d5fceeb392ab380d9d1785d"
-    end
-    if Hardware::CPU.intel?
-      url "https://github.com/nclandrei/distill/releases/download/v0.5.2/distill-cli-x86_64-apple-darwin.tar.xz"
-      sha256 "ba390591c7c99ef11702bf8835a4691da29b0bf0f74fea050c8c5e30e6d39686"
-    end
-  end
-  if OS.linux?
-    if Hardware::CPU.intel?
-      url "https://github.com/nclandrei/distill/releases/download/v0.5.2/distill-cli-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "bdef0b303f41cbec1db48c1c5808457fcb4d5580198b5bd086ccac59f467281a"
-    end
-  end
+  url "https://github.com/nclandrei/distill/archive/b28148e4e8519e82b0f74ee5970bf39a90ff7fd2.tar.gz"
+  version "0.5.2+git.20260317.b28148e"
+  sha256 "6ef1700721c9a6fd564e73ba4f12db5ee1301fa86d2d9ebbd2807f7a2725d942"
   license "MIT"
 
-  BINARY_ALIASES = {
-    "aarch64-apple-darwin": {},
-    "x86_64-apple-darwin": {},
-    "x86_64-unknown-linux-gnu": {}
-  }
-
-  def target_triple
-    cpu = Hardware::CPU.arm? ? "aarch64" : "x86_64"
-    os = OS.mac? ? "apple-darwin" : "unknown-linux-gnu"
-
-    "#{cpu}-#{os}"
-  end
-
-  def install_binary_aliases!
-    BINARY_ALIASES[target_triple.to_sym].each do |source, dests|
-      dests.each do |dest|
-        bin.install_symlink bin/source.to_s => dest
-      end
-    end
-  end
+  depends_on "rust" => :build
 
   def install
-    if OS.mac? && Hardware::CPU.arm?
-      bin.install "distill"
-    end
-    if OS.mac? && Hardware::CPU.intel?
-      bin.install "distill"
-    end
-    if OS.linux? && Hardware::CPU.intel?
-      bin.install "distill"
-    end
+    system "cargo", "install", *std_cargo_args
+  end
 
-    install_binary_aliases!
-
-    # Homebrew will automatically install these, so we don't need to do that
-    doc_files = Dir["README.*", "readme.*", "LICENSE", "LICENSE.*", "CHANGELOG.*"]
-    leftover_contents = Dir["*"] - doc_files
-
-    # Install any leftover files in pkgshare; these are probably config or
-    # sample files.
-    pkgshare.install(*leftover_contents) unless leftover_contents.empty?
+  test do
+    assert_match "distill", shell_output("#{bin}/distill --help")
   end
 end

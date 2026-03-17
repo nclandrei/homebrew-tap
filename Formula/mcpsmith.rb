@@ -1,9 +1,9 @@
 class Mcpsmith < Formula
-  desc "Convert MCP servers into source-grounded skill packs with staged review and verify steps"
-  homepage "https://crates.io/crates/mcpsmith"
-  url "https://static.crates.io/crates/mcpsmith/mcpsmith-0.3.0.crate"
-  version "0.3.0"
-  sha256 "31a437544ad95af5ead60a951987f4ee48744f2946a5a029bceb3ab3742d566b"
+  desc "Convert MCP servers into staged, source-grounded skill packs"
+  homepage "https://github.com/nclandrei/mcpsmith"
+  url "https://github.com/nclandrei/mcpsmith/archive/33c6cfe57dd489f4c5df19fb98b85a255500e465.tar.gz"
+  version "0.3.0+git.20260316.33c6cfe"
+  sha256 "6af39afb734e70a404fe84f9683e5129b1ba03ae06b8c0643a1d71b08eda4d62"
   license "MIT"
 
   depends_on "rust" => :build
