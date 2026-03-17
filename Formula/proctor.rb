@@ -1,9 +1,9 @@
 class Proctor < Formula
   desc "Manual verification contract CLI for coding agents"
   homepage "https://github.com/nclandrei/proctor"
-  url "https://github.com/nclandrei/proctor/archive/f443e631ed81b2df656d333e0731d891ad1f7edc.tar.gz"
-  version "0.1.1+git.20260317.f443e63"
-  sha256 "0dc082324217f0adc8924dec06109aead78fd3bf3bef0c116042422ec879dfc6"
+  url "https://github.com/nclandrei/proctor/archive/fcfcb90b6eac9dd6511830b483006d8e384a4342.tar.gz"
+  version "0.1.1+git.20260317.fcfcb90"
+  sha256 "42654ba26e69b117cd52d12f18bb05610a8eb1d5b7890708c01085c018e1f108"
 
   depends_on "go" => :build
 
