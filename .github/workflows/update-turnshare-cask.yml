@@ -1,0 +1,88 @@
+name: Update Turnshare Cask
+
+on:
+  schedule:
+    - cron: "37 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-turnshare-cask
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out tap
+        uses: actions/checkout@v4
+
+      - name: Fetch latest release and update cask
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          RELEASE_JSON=$(gh api repos/nclandrei/turnshare/releases/latest 2>/dev/null || true)
+
+          if [ -z "$RELEASE_JSON" ] || [ "$RELEASE_JSON" = "null" ]; then
+            echo "No releases found for turnshare — skipping."
+            exit 0
+          fi
+
+          TAG=$(echo "$RELEASE_JSON" | jq -r '.tag_name')
+          VERSION="${TAG#v}"
+          URL=$(echo "$RELEASE_JSON" | jq -r '.assets[] | select(.name == "Turnshare.zip") | .browser_download_url')
+
+          if [ -z "$URL" ] || [ "$URL" = "null" ]; then
+            echo "No Turnshare.zip asset in release ${TAG} — skipping."
+            exit 0
+          fi
+
+          CURRENT_VERSION=$(grep '  version "' Casks/turnshare.rb | sed 's/.*version "//; s/"//')
+          if [ "$VERSION" = "$CURRENT_VERSION" ]; then
+            echo "Cask already at version ${VERSION} — nothing to do."
+            exit 0
+          fi
+
+          echo "Updating cask: ${CURRENT_VERSION} → ${VERSION}"
+          curl -sL "$URL" -o /tmp/Turnshare.zip
+          SHA=$(sha256sum /tmp/Turnshare.zip | cut -d' ' -f1)
+
+          cat > Casks/turnshare.rb << EOF
+          cask "turnshare" do
+            version "${VERSION}"
+            sha256 "${SHA}"
+
+            url "https://github.com/nclandrei/turnshare/releases/download/v#{version}/Turnshare.zip"
+            name "Turnshare"
+            desc "macOS menu bar app for sharing AI coding sessions via GitHub Gists"
+            homepage "https://github.com/nclandrei/turnshare"
+
+            depends_on macos: ">= :sonoma"
+
+            app "Turnshare.app"
+
+            zap trash: [
+              "~/Library/Preferences/com.nclandrei.turnshare.plist",
+            ]
+          end
+          EOF
+
+      - name: Verify cask syntax
+        run: ruby -c Casks/turnshare.rb
+
+      - name: Commit updated cask
+        run: |
+          if git diff --quiet; then
+            echo "No cask updates were needed."
+            exit 0
+          fi
+
+          VERSION=$(grep '  version "' Casks/turnshare.rb | sed 's/.*version "//; s/"//')
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Casks/turnshare.rb
+          git commit -m "chore: update turnshare cask to ${VERSION}"
+          git push
