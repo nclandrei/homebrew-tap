@@ -60,8 +60,8 @@ jobs:
           fi
 
           changed_formulas="$(git diff --name-only -- Formula | sed 's#^Formula/##; s#\\.rb$##' | paste -sd ', ' -)"
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "Andrei Nicolae"
+          git config user.email "andrei@nicolaeandrei.com"
           git add Formula
           git commit -m "chore: refresh snapshot formulas (${changed_formulas})"
           git push
