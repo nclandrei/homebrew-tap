@@ -1,9 +1,9 @@
 class Distill < Formula
   desc "Monitor AI agent sessions and propose reusable skills"
   homepage "https://github.com/nclandrei/distill"
-  url "https://github.com/nclandrei/distill/archive/b2c55ad706fc248aa4f85e0daec6517d4eaeac06.tar.gz"
-  version "0.5.3+git.20260318.b2c55ad"
-  sha256 "95590f6de96a62567d8f0abbeaf50d1d8e1459431fcd6bc72cd26f295e814d55"
+  url "https://github.com/nclandrei/distill/archive/88f6dd107926880b69a5964c8c935efe778ea71c.tar.gz"
+  version "0.5.3+git.20260318.88f6dd1"
+  sha256 "c5d3d980135a2a27a4676a3c865d7f56682c224f5a2ffd00ab9829db81e928a8"
   license "MIT"
 
   depends_on "rust" => :build

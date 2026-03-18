@@ -1,9 +1,9 @@
 class Mcpsmith < Formula
   desc "Convert MCP servers into staged, source-grounded skill packs"
   homepage "https://github.com/nclandrei/mcpsmith"
-  url "https://github.com/nclandrei/mcpsmith/archive/ea0b1b0abc4d8b8464640c081a2843b3fc4e1c80.tar.gz"
-  version "0.4.0+git.20260317.ea0b1b0"
-  sha256 "60709fcc0368104ab392460444f64616cef31166a546d51717ed163328b1d4be"
+  url "https://github.com/nclandrei/mcpsmith/archive/6dd43964f4dd60f3c0d2cb93c3455ed67cec3608.tar.gz"
+  version "0.4.0+git.20260318.6dd4396"
+  sha256 "a68b08283ca06aacb4f228a6e31417dd645db2768aebe68e8a3f071d31193c94"
   license "MIT"
 
   depends_on "rust" => :build
