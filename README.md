@@ -20,6 +20,7 @@ brew install --cask nclandrei/tap/<cask>
 
 | Cask | Description |
 |------|-------------|
+| reaper | macOS menu bar process killer with one-click quit |
 | turnshare | macOS menu bar app for sharing AI coding sessions via GitHub Gists |
 
 ## Available Formulas
