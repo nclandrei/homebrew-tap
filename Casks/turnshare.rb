@@ -1,8 +1,8 @@
 cask "turnshare" do
-  version "20260329.150422"
-  sha256 "401a2f7efc9e38e5c275b255699165048b5b9f5c1e84ed10af3b7305503c21d2"
+  version "20260329.151649"
+  sha256 "ed705ffe2dddac9e92d3696054ea7b0f5df3edff3c142fa60c86ceb20bf67fc1"
 
-  url "https://github.com/nclandrei/turnshare/releases/download/v20260329.150422/Turnshare.zip"
+  url "https://github.com/nclandrei/turnshare/releases/download/v20260329.151649/Turnshare.zip"
   name "Turnshare"
   desc "macOS menu bar app for sharing AI coding sessions via GitHub Gists"
   homepage "https://github.com/nclandrei/turnshare"
