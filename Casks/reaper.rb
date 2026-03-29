@@ -1,8 +1,8 @@
 cask "reaper" do
-  version "20260329.085618"
-  sha256 "4f789fcf1e28e1281953cd33c3e62a28845aeab39af07cbf8babb6fc17cde4d0"
+  version "20260329.151609"
+  sha256 "0ae169e7b2ed4df31d2781db996ef8207d32000d7dd576e04962a3c4284c9043"
 
-  url "https://github.com/nclandrei/reaper/releases/download/v20260329.085618/Reaper.zip"
+  url "https://github.com/nclandrei/reaper/releases/download/v20260329.151609/Reaper.zip"
   name "Reaper"
   desc "macOS menu bar process killer with one-click quit"
   homepage "https://github.com/nclandrei/reaper"
