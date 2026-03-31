@@ -1,9 +1,9 @@
 class Planwarden < Formula
   desc "CLI planning enforcer for AI agents"
   homepage "https://github.com/nclandrei/planwarden"
-  url "https://github.com/nclandrei/planwarden/archive/c69a9ea358dbbcc23c963d9c314d84a0144bb357.tar.gz"
-  version "0.4.0+git.20260318.c69a9ea"
-  sha256 "ccb98ecaa7ffb67cb31b091bf6d2bd2ca3e1d77d7cde66695eb1aa5a0fc72543"
+  url "https://github.com/nclandrei/planwarden/archive/b00c1fff399fc99e9c98a4155ddd7b7acc5a6314.tar.gz"
+  version "0.4.0+git.20260331.b00c1ff"
+  sha256 "19c65df966863b4ff33b0de2d237ee0a4c06423d39fadf60292db688d4ebff21"
   license "MIT"
 
   depends_on "rust" => :build

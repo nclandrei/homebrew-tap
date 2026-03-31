@@ -1,9 +1,9 @@
 class Magellan < Formula
   desc "Deterministic presentation engine for AI-generated technical walkthroughs"
   homepage "https://github.com/nclandrei/magellan"
-  url "https://github.com/nclandrei/magellan/archive/5cb0cab4a78d8a6d1ede0d2a899833f41ed37de3.tar.gz"
-  version "0.3.0+git.20260329.5cb0cab"
-  sha256 "288656cb85dab8df49ae3c54566cfcb92953ad38d240da32987b3db51121481d"
+  url "https://github.com/nclandrei/magellan/archive/c78048e1e57ccc00fff6a2ce4051b0977b6a443d.tar.gz"
+  version "0.3.0+git.20260331.c78048e"
+  sha256 "0af11beceff901ec74eba5b8fc9955d707195001505d9bd119c6312c3a7ecb8a"
   license "MIT"
 
   depends_on "rust" => :build
