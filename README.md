@@ -20,6 +20,7 @@ brew install --cask nclandrei/tap/<cask>
 
 | Cask | Description |
 |------|-------------|
+| cicero | AI-native macOS presentation app for developers |
 | reaper | macOS menu bar process killer with one-click quit |
 | turnshare | macOS menu bar app for sharing AI coding sessions via GitHub Gists |
 

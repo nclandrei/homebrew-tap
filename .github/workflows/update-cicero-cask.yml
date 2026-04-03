@@ -1,0 +1,88 @@
+name: Update Cicero Cask
+
+on:
+  schedule:
+    - cron: "23 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-cicero-cask
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out tap
+        uses: actions/checkout@v4
+
+      - name: Fetch latest release and update cask
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          RELEASE_JSON=$(gh api repos/nclandrei/cicero/releases/latest 2>/dev/null || true)
+
+          if [ -z "$RELEASE_JSON" ] || [ "$RELEASE_JSON" = "null" ]; then
+            echo "No releases found for cicero — skipping."
+            exit 0
+          fi
+
+          TAG=$(echo "$RELEASE_JSON" | jq -r '.tag_name')
+          VERSION="${TAG#v}"
+          URL=$(echo "$RELEASE_JSON" | jq -r '.assets[] | select(.name == "Cicero.zip") | .browser_download_url')
+
+          if [ -z "$URL" ] || [ "$URL" = "null" ]; then
+            echo "No Cicero.zip asset in release ${TAG} — skipping."
+            exit 0
+          fi
+
+          CURRENT_VERSION=$(grep '  version "' Casks/cicero.rb | sed 's/.*version "//; s/"//')
+          if [ "$VERSION" = "$CURRENT_VERSION" ]; then
+            echo "Cask already at version ${VERSION} — nothing to do."
+            exit 0
+          fi
+
+          echo "Updating cask: ${CURRENT_VERSION} → ${VERSION}"
+          curl -sL "$URL" -o /tmp/Cicero.zip
+          SHA=$(sha256sum /tmp/Cicero.zip | cut -d' ' -f1)
+
+          cat > Casks/cicero.rb << EOF
+          cask "cicero" do
+            version "${VERSION}"
+            sha256 "${SHA}"
+
+            url "https://github.com/nclandrei/cicero/releases/download/v#{version}/Cicero.zip"
+            name "Cicero"
+            desc "AI-native macOS presentation app for developers"
+            homepage "https://github.com/nclandrei/cicero"
+
+            depends_on macos: ">= :sonoma"
+
+            app "Cicero.app"
+
+            zap trash: [
+              "~/Library/Preferences/com.andreinicolas.Cicero.plist",
+            ]
+          end
+          EOF
+
+      - name: Verify cask syntax
+        run: ruby -c Casks/cicero.rb
+
+      - name: Commit updated cask
+        run: |
+          if git diff --quiet; then
+            echo "No cask updates were needed."
+            exit 0
+          fi
+
+          VERSION=$(grep '  version "' Casks/cicero.rb | sed 's/.*version "//; s/"//')
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Casks/cicero.rb
+          git commit -m "chore: update cicero cask to ${VERSION}"
+          git push
