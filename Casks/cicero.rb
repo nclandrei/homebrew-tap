@@ -1,8 +1,8 @@
 cask "cicero" do
-  version "20260405.081637"
-  sha256 "c4ddddf51bae1797b5f0c144e50e25803fadc98f45d6e40e591182290aacdb8d"
+  version "20260405.082437"
+  sha256 "613f1c9e97d89f38697f012e9c66cc97d85eb9afc6b468e9986465a208efafa9"
 
-  url "https://github.com/nclandrei/cicero/releases/download/v20260405.081637/Cicero.zip"
+  url "https://github.com/nclandrei/cicero/releases/download/v20260405.082437/Cicero.zip"
   name "Cicero"
   desc "AI-native macOS presentation app for developers"
   homepage "https://github.com/nclandrei/cicero"
