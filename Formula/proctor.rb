@@ -1,14 +1,22 @@
 class Proctor < Formula
   desc "Manual verification contract CLI for coding agents"
   homepage "https://github.com/nclandrei/proctor"
-  url "https://github.com/nclandrei/proctor/archive/710878c1e2606f8b5dd8f0d2230deaa15b2a3d42.tar.gz"
-  version "0.7.0+git.20260405.710878c"
-  sha256 "436127200516c34d49673a5470b9d864a1aa64e8def0327f99ff64e3bc75dc10"
 
-  depends_on "go" => :build
+  if OS.mac? && Hardware::CPU.arm?
+    url "https://github.com/nclandrei/proctor/releases/download/v0.8.0/proctor-aarch64-apple-darwin.tar.gz"
+    sha256 "204bb840b03f6df575faa572fd11679c5bda8adf637d24ffbfee8a325d539967"
+  end
+  if OS.mac? && Hardware::CPU.intel?
+    url "https://github.com/nclandrei/proctor/releases/download/v0.8.0/proctor-x86_64-apple-darwin.tar.gz"
+    sha256 "eabbc3810360d377956cbd5230fd660d423f59035893121f3ec198acdb3ca85a"
+  end
+  if OS.linux? && Hardware::CPU.intel?
+    url "https://github.com/nclandrei/proctor/releases/download/v0.8.0/proctor-x86_64-unknown-linux-gnu.tar.gz"
+    sha256 "d658d0b4267724545794dc3258370ae6a13e976a4dcbbc687ccac7f8d790f6a6"
+  end
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w"), "."
+    bin.install "proctor"
   end
 
   test do
