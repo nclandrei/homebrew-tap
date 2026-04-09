@@ -74,6 +74,8 @@
     "formula": "proctor",
     "repo": "nclandrei/proctor",
     "branch": "main",
+    "snapshot": false,
+    "note": "Has its own release workflow that publishes pre-built binaries.",
     "desc": "Manual verification contract CLI for coding agents",
     "build": {
       "type": "go",
