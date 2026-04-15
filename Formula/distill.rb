@@ -1,18 +1,65 @@
 class Distill < Formula
-  desc "Monitor AI agent sessions and propose reusable skills"
+  desc "CLI tool that monitors AI agent sessions, identifies patterns, and proposes skills"
   homepage "https://github.com/nclandrei/distill"
-  url "https://github.com/nclandrei/distill/archive/31c6f6003ab41927e030de2de97a864528cfa9f1.tar.gz"
-  version "0.6.5+git.20260405.31c6f60"
-  sha256 "a6fd41b42e48e19b87a1075d43c5b57a0de875b5cb2afe0b2b43e286cb56fc68"
+  version "0.6.6"
+  if OS.mac?
+    if Hardware::CPU.arm?
+      url "https://github.com/nclandrei/distill/releases/download/v0.6.6/distill-cli-aarch64-apple-darwin.tar.xz"
+      sha256 "9be7579d52924553b1d77c36581ea658bf7f7e571b357585c52115580b5ae491"
+    end
+    if Hardware::CPU.intel?
+      url "https://github.com/nclandrei/distill/releases/download/v0.6.6/distill-cli-x86_64-apple-darwin.tar.xz"
+      sha256 "29f94c624a492e3949ff9998481b66fa4ae00e5bf8d83f7627d9d96d15a33cc5"
+    end
+  end
+  if OS.linux?
+    if Hardware::CPU.intel?
+      url "https://github.com/nclandrei/distill/releases/download/v0.6.6/distill-cli-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "f041e702db5c8d79803355b85e25946f0d79bf68894739ab478f6ee7be06bb0a"
+    end
+  end
   license "MIT"
 
-  depends_on "rust" => :build
+  BINARY_ALIASES = {
+    "aarch64-apple-darwin": {},
+    "x86_64-apple-darwin": {},
+    "x86_64-unknown-linux-gnu": {}
+  }
 
-  def install
-    system "cargo", "install", *std_cargo_args
+  def target_triple
+    cpu = Hardware::CPU.arm? ? "aarch64" : "x86_64"
+    os = OS.mac? ? "apple-darwin" : "unknown-linux-gnu"
+
+    "#{cpu}-#{os}"
   end
 
-  test do
-    assert_match "distill", shell_output("#{bin}/distill --help")
+  def install_binary_aliases!
+    BINARY_ALIASES[target_triple.to_sym].each do |source, dests|
+      dests.each do |dest|
+        bin.install_symlink bin/source.to_s => dest
+      end
+    end
+  end
+
+  def install
+    if OS.mac? && Hardware::CPU.arm?
+      bin.install "distill"
+    end
+    if OS.mac? && Hardware::CPU.intel?
+      bin.install "distill"
+    end
+    if OS.linux? && Hardware::CPU.intel?
+      bin.install "distill"
+    end
+
+    install_binary_aliases!
+
+    # Homebrew will automatically install these, so we don't need to do that
+    doc_files = Dir["README.*", "readme.*", "LICENSE", "LICENSE.*", "CHANGELOG.*"]
+    leftover_contents = Dir["*"] - doc_files
+
+    # Install any leftover files in pkgshare; these are probably config or
+    # sample files.
+    pkgshare.install(*leftover_contents) unless leftover_contents.empty?
   end
 end
