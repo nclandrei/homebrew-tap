@@ -3,16 +3,16 @@ class Proctor < Formula
   homepage "https://github.com/nclandrei/proctor"
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://github.com/nclandrei/proctor/releases/download/v0.10.0/proctor-aarch64-apple-darwin.tar.gz"
-    sha256 "9bb42efd7bf5576aeb9dc7ebf95022562a3c166ef19152881bd7ec2abdb40f6c"
+    url "https://github.com/nclandrei/proctor/releases/download/v0.11.0/proctor-aarch64-apple-darwin.tar.gz"
+    sha256 "55e843fa654fe8b3ada1e737c5b9efa033de732b44cf91c6eefb303e49b8f1a2"
   end
   if OS.mac? && Hardware::CPU.intel?
-    url "https://github.com/nclandrei/proctor/releases/download/v0.10.0/proctor-x86_64-apple-darwin.tar.gz"
-    sha256 "4e015849a444ef301180c9c7c7648854baebcf3ca54b01721d6e0b175d270487"
+    url "https://github.com/nclandrei/proctor/releases/download/v0.11.0/proctor-x86_64-apple-darwin.tar.gz"
+    sha256 "e5f4fd6fe1a53aa9f208e911dedee3edd1ee5ec4292ad2a1bcee86e35b00a52c"
   end
   if OS.linux? && Hardware::CPU.intel?
-    url "https://github.com/nclandrei/proctor/releases/download/v0.10.0/proctor-x86_64-unknown-linux-gnu.tar.gz"
-    sha256 "50f35cf53850c9fa65f56ccd47bc26454145265161e27ca8816bdf27e4f0a68b"
+    url "https://github.com/nclandrei/proctor/releases/download/v0.11.0/proctor-x86_64-unknown-linux-gnu.tar.gz"
+    sha256 "b010bc5d12ae1dbe83c56a05a6a4593c4a37f4d6ca320597f0b83e5fc30a3061"
   end
 
   def install
