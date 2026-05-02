@@ -1,5 +1,5 @@
 class Axon < Formula
-  desc "macOS accessibility CLI for AI agent workflows"
+  desc "CLI for AI agents to drive macOS apps via the accessibility API"
   homepage "https://github.com/nclandrei/axon"
   url "https://github.com/nclandrei/axon/archive/refs/tags/v0.2.1.tar.gz"
   version "0.2.1"

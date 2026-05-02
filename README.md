@@ -28,6 +28,7 @@ brew install --cask nclandrei/tap/<cask>
 
 | Formula | Description |
 |---------|-------------|
+| axon | CLI for AI agents to drive macOS apps via the accessibility API |
 | claude-statusline | Minimal statusline renderer for Claude Code |
 | distill | CLI tool that monitors AI agent sessions, identifies patterns, and proposes skills |
 | magellan | Deterministic presentation engine for AI-generated technical walkthroughs |
