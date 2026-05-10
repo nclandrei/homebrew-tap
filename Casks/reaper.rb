@@ -8,6 +8,7 @@ cask "reaper" do
   homepage "https://github.com/nclandrei/reaper"
 
   depends_on macos: ">= :sonoma"
+  conflicts_with cask: "homebrew/cask/reaper"
 
   app "Reaper.app"
 
