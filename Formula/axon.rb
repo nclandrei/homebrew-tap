@@ -1,9 +1,9 @@
 class Axon < Formula
-  desc "CLI for AI agents to drive macOS apps via the accessibility API"
+  desc "macOS accessibility CLI for AI agent workflows"
   homepage "https://github.com/nclandrei/axon"
-  url "https://github.com/nclandrei/axon/archive/refs/tags/v0.2.1.tar.gz"
-  version "0.2.1"
-  sha256 "b48889df55048fe206334619fbf98f07a557299daf8158574679c889fab7ee51"
+  url "https://github.com/nclandrei/axon/archive/refs/tags/v0.3.0.tar.gz"
+  version "0.3.0"
+  sha256 "cb108e8222e5e02951770888c6560838291432919d73bed56c2663469fcc8614"
 
   depends_on :macos
   depends_on xcode: ["15.0", :build]
